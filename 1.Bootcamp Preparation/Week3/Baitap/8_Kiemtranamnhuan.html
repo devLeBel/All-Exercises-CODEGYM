@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra năm nhuận</title>
+</head>
+<body>
+    <h1>Kiểm tra năm nhuận</h1>
+    <form id="leapYearForm">
+        <label for="year">Nhập năm:</label>
+        <input type="number" id="year" name="year" required>
+        <button type="submit">Kiểm tra</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('leapYearForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const year = parseInt(document.getElementById('year').value);
+            let result = '';
+
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                result = `${year} là năm nhuận.`;
+            } else {
+                result = `${year} không phải là năm nhuận.`;
+            }
+
+            document.getElementById('result').textContent = result;
+        });
+    </script>
+</body>
+</html>
