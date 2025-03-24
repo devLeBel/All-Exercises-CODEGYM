@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính diện tích hình chữ nhật</title>
+</head>
+<body>
+    <h2>Nhập kích thước hình chữ nhật</h2>
+    
+    <label for="width">Chiều rộng:</label>
+    <input type="number" id="width"><br><br>
+
+    <label for="height">Chiều cao:</label>
+    <input type="number" id="height"><br><br>
+
+    <button onclick="calculateArea()">Tính diện tích</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function calculateArea() {
+            let inputWidth = document.getElementById("width").value;
+            let inputHeight = document.getElementById("height").value;
+
+            let width = parseInt(inputWidth);
+            let height = parseInt(inputHeight);
+
+            if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+                document.getElementById("result").innerHTML = "Vui lòng nhập số hợp lệ!";
+                return;
+            }
+
+            let area = width * height;
+            document.getElementById("result").innerHTML = "Diện tích: " + area;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập Biến, Kiểu dữ liệu và Toán tử</title>
+</head>
+<body>
+    <h2>Bài 1: Nhập điểm & Tính tổng, trung bình</h2>
+    <label for="physics">Vật lý:</label>
+    <input type="number" id="physics"><br><br>
+    
+    <label for="chemistry">Hóa học:</label>
+    <input type="number" id="chemistry"><br><br>
+
+    <label for="biology">Sinh học:</label>
+    <input type="number" id="biology"><br><br>
+
+    <button onclick="calculateScores()">Tính</button>
+    <h3 id="scoreResult"></h3>
+
+    <h2>Bài 2: Chuyển đổi nhiệt độ</h2>
+    <label for="celsius">Nhập nhiệt độ (°C):</label>
+    <input type="number" id="celsius">
+    <button onclick="convertTemperature()">Chuyển đổi</button>
+    <h3 id="tempResult"></h3>
+
+    <h2>Bài 3 & 4: Tính diện tích và chu vi hình tròn</h2>
+    <label for="radius">Nhập bán kính:</label>
+    <input type="number" id="radius">
+    <button onclick="calculateCircle()">Tính</button>
+    <h3 id="circleResult"></h3>
+
+    <script>
+        function calculateScores() {
+            let physics = parseFloat(document.getElementById("physics").value);
+            let chemistry = parseFloat(document.getElementById("chemistry").value);
+            let biology = parseFloat(document.getElementById("biology").value);
+
+            if (isNaN(physics) || isNaN(chemistry) || isNaN(biology)) {
+                document.getElementById("scoreResult").innerText = "Vui lòng nhập đầy đủ điểm.";
+                return;
+            }
+
+            let total = physics + chemistry + biology;
+            let average = total / 3;
+            document.getElementById("scoreResult").innerText = `Tổng: ${total}, Trung bình: ${average.toFixed(2)}`;
+        }
+
+        function convertTemperature() {
+            let celsius = parseFloat(document.getElementById("celsius").value);
+
+            if (isNaN(celsius)) {
+                document.getElementById("tempResult").innerText = "Vui lòng nhập nhiệt độ.";
+                return;
+            }
+
+            let fahrenheit = (celsius * 9/5) + 32;
+            document.getElementById("tempResult").innerText = `${celsius}°C = ${fahrenheit.toFixed(2)}°F`;
+        }
+
+        function calculateCircle() {
+            let radius = parseFloat(document.getElementById("radius").value);
+
+            if (isNaN(radius) || radius <= 0) {
+                document.getElementById("circleResult").innerText = "Vui lòng nhập bán kính hợp lệ.";
+                return;
+            }
+
+            let area = Math.PI * radius * radius;
+            let circumference = 2 * Math.PI * radius;
+            document.getElementById("circleResult").innerText = `Diện tích: ${area.toFixed(2)}, Chu vi: ${circumference.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

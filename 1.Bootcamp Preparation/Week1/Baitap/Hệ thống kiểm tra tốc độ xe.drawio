@@ -1,0 +1,68 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.16 Chrome/132.0.6834.196 Electron/34.2.0 Safari/537.36" version="26.0.16">
+  <diagram name="Trang-1" id="OlUZc8L8dHr21AnAtd-L">
+    <mxGraphModel dx="934" dy="601" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=17;fontStyle=1" edge="1" parent="1" source="h-PcbRSBdA7OmoRJjF9t-1" target="h-PcbRSBdA7OmoRJjF9t-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-1" value="Begin" style="ellipse;whiteSpace=wrap;html=1;fontSize=17;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="30" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=17;fontStyle=1" edge="1" parent="1" source="h-PcbRSBdA7OmoRJjF9t-4" target="h-PcbRSBdA7OmoRJjF9t-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-4" value="Input: tốc độ thực tế&amp;nbsp;&lt;div&gt;a&lt;/div&gt;&lt;div&gt;Input: tốc độ tối đa&lt;/div&gt;&lt;div&gt;b&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=17;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="372.5" y="27.5" width="225" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=17;fontStyle=1" edge="1" parent="1" source="h-PcbRSBdA7OmoRJjF9t-6" target="h-PcbRSBdA7OmoRJjF9t-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-32" value="sai" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=17;fontStyle=1" vertex="1" connectable="0" parent="h-PcbRSBdA7OmoRJjF9t-31">
+          <mxGeometry x="-0.2479" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=17;fontStyle=1" edge="1" parent="1" source="h-PcbRSBdA7OmoRJjF9t-6" target="h-PcbRSBdA7OmoRJjF9t-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=17;fontStyle=1" edge="1" parent="1" source="h-PcbRSBdA7OmoRJjF9t-6" target="h-PcbRSBdA7OmoRJjF9t-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-39" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;đúng&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="h-PcbRSBdA7OmoRJjF9t-35">
+          <mxGeometry x="-0.8625" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-6" value="if a &amp;gt; b&amp;nbsp;" style="rhombus;whiteSpace=wrap;html=1;fontSize=17;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="410" y="160" width="150" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-8" value="output: Vi phạm tốc độ&lt;div&gt;phạt 1 triệu&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=17;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="267.5" y="530" width="175" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=17;fontStyle=1" edge="1" parent="1" source="h-PcbRSBdA7OmoRJjF9t-10" target="h-PcbRSBdA7OmoRJjF9t-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-10" value="if a &amp;gt; b x 1,5" style="rhombus;whiteSpace=wrap;html=1;fontSize=17;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="350" width="150" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-13" value="output: Vi phạm tốc độ&lt;div&gt;phạt 2 triệu&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=17;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="545.5" y="530" width="179" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-15" value="output : Không có vi pham" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontSize=17;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="110" y="370" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=17;fontStyle=1" edge="1" parent="1" source="h-PcbRSBdA7OmoRJjF9t-33" target="h-PcbRSBdA7OmoRJjF9t-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-33" value="if a &amp;lt;= b x 1,5" style="rhombus;whiteSpace=wrap;html=1;fontSize=17;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="285" y="350" width="140" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="h-PcbRSBdA7OmoRJjF9t-38" value="Vượt quá 50%&amp;nbsp;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;tốc độ tối đa&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="670" y="360" width="100" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5753c9;
+        }
+        .result {
+            font-size: 1.2em;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Converter</h1>
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" value="1">
+        </div>
+        <div class="form-group">
+            <label for="fromCurrency">From Currency</label>
+            <select id="fromCurrency">
+                <option value="VND">Vietnam Dong</option>
+                <option value="USD">US Dollar</option>
+                <!-- Add more currencies as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="toCurrency">To Currency</label>
+            <select id="toCurrency">
+                <option value="USD">US Dollar</option>
+                <option value="VND">Vietnam Dong</option>
+                <!-- Add more currencies as needed -->
+            </select>
+        </div>
+        <button onclick="convertCurrency()">Convert</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function convertCurrency() {
+            const amount = document.getElementById('amount').value;
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+
+            // Example conversion rates
+            const rates = {
+                'VND': {
+                    'USD': 0.000043,
+                },
+                'USD': {
+                    'VND': 23000,
+                }
+            };
+
+            const result = amount * rates[fromCurrency][toCurrency];
+            document.getElementById('result').innerText = `Result: ${result} ${toCurrency}`;
+        }
+    </script>
+</body>
+</html>
