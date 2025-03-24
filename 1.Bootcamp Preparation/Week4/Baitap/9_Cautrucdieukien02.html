@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương Trình Bài Tập</title>
+    <script>
+        function chuyenDoCThanhDoF() {
+            let doC = parseFloat(prompt("Nhập độ C:"));
+            let doF = (doC * 9 / 5) + 32;
+            alert(`${doC} độ C = ${doF} độ F`);
+        }
+
+        function chuyenMetSangFeet() {
+            let met = parseFloat(prompt("Nhập số mét:"));
+            let feet = met * 3.2808;
+            alert(`${met} mét = ${feet} feet`);
+        }
+
+        function tinhDienTichHinhVuong() {
+            let canh = parseFloat(prompt("Nhập cạnh hình vuông:"));
+            let dienTich = canh * canh;
+            alert(`Diện tích hình vuông là: ${dienTich}`);
+        }
+
+        function tinhDienTichHinhChuNhat() {
+            let chieuDai = parseFloat(prompt("Nhập chiều dài:"));
+            let chieuRong = parseFloat(prompt("Nhập chiều rộng:"));
+            let dienTich = chieuDai * chieuRong;
+            alert(`Diện tích hình chữ nhật là: ${dienTich}`);
+        }
+
+        function tinhDienTichTamGiac() {
+            let canhA = parseFloat(prompt("Nhập cạnh a:"));
+            let canhB = parseFloat(prompt("Nhập cạnh b:"));
+            let canhC = parseFloat(prompt("Nhập cạnh c:"));
+            if (canhA + canhB > canhC && canhA + canhC > canhB && canhB + canhC > canhA) {
+                let p = (canhA + canhB + canhC) / 2;
+                let dienTich = Math.sqrt(p * (p - canhA) * (p - canhB) * (p - canhC));
+                alert(`Diện tích tam giác là: ${dienTich}`);
+            } else {
+                alert("Ba cạnh không tạo thành tam giác.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Chọn Chương Trình</h1>
+    <button onclick="chuyenDoCThanhDoF()">Chuyển độ C sang độ F</button>
+    <button onclick="chuyenMetSangFeet()">Chuyển mét sang feet</button>
+    <button onclick="tinhDienTichHinhVuong()">Tính diện tích hình vuông</button>
+    <button onclick="tinhDienTichHinhChuNhat()">Tính diện tích hình chữ nhật</button>
+    <button onclick="tinhDienTichTamGiac()">Tính diện tích tam giác</button>
+</body>
+</html>

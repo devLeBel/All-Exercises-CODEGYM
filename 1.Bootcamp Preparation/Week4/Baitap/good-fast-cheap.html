@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tốt - Rẻ - Nhanh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .option {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tốt - Rẻ - Nhanh</h1>
+    <div class="option">
+        <input type="checkbox" id="good" />
+        <label for="good">TỐT</label>
+    </div>
+    <div class="option">
+        <input type="checkbox" id="cheap" />
+        <label for="cheap">RẺ</label>
+    </div>
+    <div class="option">
+        <input type="checkbox" id="fast" />
+        <label for="fast">NHANH</label>
+    </div>
+
+    <script>
+        const good = document.getElementById('good');
+        const cheap = document.getElementById('cheap');
+        const fast = document.getElementById('fast');
+
+        function enforceRules(changed) {
+            if (good.checked && cheap.checked && fast.checked) {
+                if (changed === good) {
+                    fast.checked = false;
+                } else if (changed === cheap) {
+                    good.checked = false;
+                } else if (changed === fast) {
+                    cheap.checked = false;
+                }
+            }
+        }
+
+        good.addEventListener('change', () => enforceRules(good));
+        cheap.addEventListener('change', () => enforceRules(cheap));
+        fast.addEventListener('change', () => enforceRules(fast));
+    </script>
+</body>
+</html>

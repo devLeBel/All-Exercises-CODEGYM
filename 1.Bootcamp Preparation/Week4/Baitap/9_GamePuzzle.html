@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Puzzle</title>
+    <style>
+        .khung {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 5px;
+        }
+        .o {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .trong {
+            background-color: white;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Puzzle</h1>
+    <div class="khung" id="khung"></div>
+    <script>
+        const oHinh = [1, 2, 3, 4, 5, 6, 7, 8, ""]; // Mảng hình ảnh
+        const khung = document.getElementById("khung");
+
+        function tronHinh() {
+            oHinh.sort(() => Math.random() - 0.5);
+        }
+
+        function taoKhung() {
+            khung.innerHTML = "";
+            oHinh.forEach((hinh, index) => {
+                const o = document.createElement("div");
+                o.className = "o";
+                if (hinh === "") o.classList.add("trong");
+                o.textContent = hinh;
+                o.addEventListener("click", () => diChuyen(index));
+                khung.appendChild(o);
+            });
+        }
+
+        function diChuyen(viTri) {
+            const viTriTrong = oHinh.indexOf("");
+            const hang = Math.floor(viTri / 3);
+            const cot = viTri % 3;
+            const hangTrong = Math.floor(viTriTrong / 3);
+            const cotTrong = viTriTrong % 3;
+
+            if (Math.abs(hang - hangTrong) + Math.abs(cot - cotTrong) === 1) {
+                [oHinh[viTri], oHinh[viTriTrong]] = [oHinh[viTriTrong], oHinh[viTri]];
+                taoKhung();
+                kiemTraHoanThanh();
+            }
+        }
+
+        function kiemTraHoanThanh() {
+            if (oHinh.join("") === "12345678") {
+                alert("Chúc mừng! Bạn đã hoàn thành trò chơi!");
+            }
+        }
+
+        tronHinh();
+        taoKhung();
+    </script>
+</body>
+</html>

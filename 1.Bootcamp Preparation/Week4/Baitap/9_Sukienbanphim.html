@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Di chuyển Nobita</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #game-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 2px solid black;
+            margin: 20px auto;
+            background-color: lightblue;
+        }
+        #nobita {
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Di chuyển Nobita bằng các phím mũi tên</h2>
+    <div id="game-container">
+        <img id="nobita" src="https://upload.wikimedia.org/wikipedia/vi/2/2c/Nobita.png" alt="Nobita">
+    </div>
+    <script>
+        function upArrowPressed() {
+            let element = document.getElementById("nobita");
+            let topPos = parseInt(element.style.top) || 0;
+            element.style.top = (topPos - 5) + 'px';
+        }
+
+        function downArrowPressed() {
+            let element = document.getElementById("nobita");
+            let topPos = parseInt(element.style.top) || 0;
+            element.style.top = (topPos + 5) + 'px';
+        }
+
+        function leftArrowPressed() {
+            let element = document.getElementById("nobita");
+            let leftPos = parseInt(element.style.left) || 0;
+            element.style.left = (leftPos - 5) + 'px';
+        }
+
+        function rightArrowPressed() {
+            let element = document.getElementById("nobita");
+            let leftPos = parseInt(element.style.left) || 0;
+            element.style.left = (leftPos + 5) + 'px';
+        }
+
+        function moveSelection(evt) {
+            switch (evt.keyCode) {
+                case 37:
+                    leftArrowPressed();
+                    break;
+                case 39:
+                    rightArrowPressed();
+                    break;
+                case 38:
+                    upArrowPressed();
+                    break;
+                case 40:
+                    downArrowPressed();
+                    break;
+            }
+        }
+
+        function docReady() {
+            window.addEventListener('keydown', moveSelection);
+        }
+
+        window.onload = docReady;
+    </script>
+</body>
+</html>
