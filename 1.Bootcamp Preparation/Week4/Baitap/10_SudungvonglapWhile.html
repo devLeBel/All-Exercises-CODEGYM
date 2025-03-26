@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+</head>
+<body>
+    <script>
+        let total = 0;
+        let num;
+
+        while (true) {
+            num = prompt("Nhập vào một số (nhập -1 để thoát):");
+            
+            if (num === null) break; // Thoát nếu người dùng nhấn "Cancel".
+            
+            if (isNaN(num) || num.trim() === "") {
+                alert("Vui lòng nhập một số hợp lệ!");
+                continue;
+            }
+
+            num = parseInt(num);
+
+            if (num === -1) break; // Thoát nếu nhập -1.
+
+            total += num; // Cộng giá trị nhập vào vào biến total.
+
+            alert("Tổng hiện tại: " + total); // Hiển thị giá trị total hiện tại.
+        }
+    </script>
+</body>
+</html>

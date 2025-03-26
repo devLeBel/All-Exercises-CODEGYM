@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sử dụng vòng lặp for</title>
+</head>
+<body>
+    <h1>Hiển thị chuỗi sử dụng vòng lặp for</h1>
+    <p id="result"></p>
+
+    <script>
+        let text = "";
+        for (let i = 0; i < 5; i++) {
+            text += "The number is " + i + "<br>";
+        }
+        document.getElementById("result").innerHTML = text;
+    </script>
+    <h1>Tính tổng các số từ 1 đến n</h1>
+    <p id="sumResult"></p>
+
+    <script>
+        let num = parseInt(prompt("Enter a number: "));
+        let total = 0;
+
+        for (let i = 1; i <= num; i++) {
+            total += i;
+        }
+
+        document.getElementById("sumResult").innerHTML = "The total sum from 1 to " + num + " is: " + total;
+    </script>
+</body>
+</html>
