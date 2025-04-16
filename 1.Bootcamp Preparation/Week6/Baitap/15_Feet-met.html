@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyen doi Feet va Meters</title>
+</head>
+<body>
+    <h1>Chuyen doi giua Feet va Meters</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Feet</th>
+                <th>Meters</th>
+                <th>Meters</th>
+                <th>Feet</th>
+            </tr>
+        </thead>
+        <tbody id="bangChuyenDoi">
+            <!-- Noi dung bang se duoc chen vao day -->
+        </tbody>
+    </table>
+
+    <script>
+        // Ham chuyen doi tu feet sang meters
+        function feetSangMeter(feet) {
+            return 0.305 * feet;
+        }
+
+        // Ham chuyen doi tu meters sang feet
+        function meterSangFeet(meter) {
+            return 3.279 * meter;
+        }
+
+        // Mang gia tri feet va meters
+        let mangFeet = [1, 2, 9, 10];
+        let mangMeters = [20, 25, 60, 65];
+
+        // Lay phan tu tbody cua bang
+        let bangChuyenDoi = document.getElementById("bangChuyenDoi");
+
+        // Them du lieu vao bang
+        for (let i = 0; i < mangFeet.length; i++) {
+            let hang = document.createElement("tr");
+
+            let oFeet = document.createElement("td");
+            oFeet.textContent = mangFeet[i];
+            hang.appendChild(oFeet);
+
+            let oMetersTuFeet = document.createElement("td");
+            oMetersTuFeet.textContent = feetSangMeter(mangFeet[i]).toFixed(3);
+            hang.appendChild(oMetersTuFeet);
+
+            let oMeters = document.createElement("td");
+            oMeters.textContent = mangMeters[i];
+            hang.appendChild(oMeters);
+
+            let oFeetTuMeters = document.createElement("td");
+            oFeetTuMeters.textContent = meterSangFeet(mangMeters[i]).toFixed(3);
+            hang.appendChild(oFeetTuMeters);
+
+            bangChuyenDoi.appendChild(hang);
+        }
+    </script>
+</body>
+</html>

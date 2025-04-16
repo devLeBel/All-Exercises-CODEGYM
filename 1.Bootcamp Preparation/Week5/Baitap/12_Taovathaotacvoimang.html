@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thêm và hiển thị mảng</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 20px;
+    }
+    input, button {
+      margin: 5px;
+      padding: 5px 10px;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Sample Screen:</h2>
+  <input type="number" id="numberInput" placeholder="Nhập số">
+  <button onclick="add()">Add</button>
+  <button onclick="display()">Display</button>
+
+  <div id="output"></div>
+
+  <script>
+    let arr = [];
+
+    function add() {
+      const value = document.getElementById("numberInput").value;
+      if (value !== "") {
+        arr.push(Number(value));
+        document.getElementById("numberInput").value = "";
+      }
+    }
+
+    function display() {
+      let output = "";
+      for (let i = 0; i < arr.length; i++) {
+        output += `Element ${i} = ${arr[i]}<br>`;
+      }
+      document.getElementById("output").innerHTML = output;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài tập in hình và tính toán</title>
+  <style>
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h2>Chọn bài cần thực hiện:</h2>
+  <select id="baiTap">
+    <option value="1">Bài 1 - In dãy Fibonacci</option>
+    <option value="2">Bài 2 - Tính giai thừa</option>
+    <option value="3">Bài 3 - In tam giác vuông</option>
+    <option value="4">Bài 4 - In hình chữ nhật rỗng</option>
+    <option value="5">Bài 5 - Tính lãi ngân hàng</option>
+    <option value="6">Bài 6 - In hình trái tim</option>
+  </select>
+  <button onclick="run()">Chạy</button>
+
+  <pre id="ketqua"></pre>
+
+  <script>
+    function run() {
+      const kq = document.getElementById("ketqua");
+      const bt = document.getElementById("baiTap").value;
+      let output = "";
+
+      switch (bt) {
+        case "1": // Fibonacci
+          let fib = [0, 1];
+          for (let i = 2; i < 20; i++) {
+            fib[i] = fib[i-1] + fib[i-2];
+          }
+          output = "Dãy Fibonacci: " + fib.join(", ");
+          break;
+
+        case "2": // Giai thừa
+          let n = parseInt(prompt("Nhập số nguyên dương:"));
+          let gt = 1;
+          for (let i = 1; i <= n; i++) gt *= i;
+          output = `Giai thừa của ${n} là: ${gt}`;
+          break;
+
+        case "3": // Tam giác vuông
+          let tamgiac = "";
+          for (let i = 1; i <= 5; i++) {
+            tamgiac += "*".repeat(i) + "\n";
+          }
+          tamgiac += "\n";
+          for (let i = 5; i >= 1; i--) {
+            tamgiac += "*".repeat(i) + "\n";
+          }
+          output = tamgiac;
+          break;
+
+        case "4": // Hình chữ nhật rỗng
+          let width = 10, height = 5;
+          for (let i = 0; i < height; i++) {
+            if (i === 0 || i === height - 1) {
+              output += "*".repeat(width) + "\n";
+            } else {
+              output += "*" + " ".repeat(width - 2) + "*" + "\n";
+            }
+          }
+          break;
+
+        case "5": // Tính lãi ngân hàng
+          let tien = parseFloat(prompt("Số tiền gửi ban đầu:"));
+          let thang = parseInt(prompt("Số tháng gửi:"));
+          let lai = parseFloat(prompt("Lãi suất (%/tháng):"));
+          for (let i = 1; i <= thang; i++) {
+            tien += tien * lai / 100;
+          }
+          output = `Số tiền sau ${thang} tháng là: ${tien.toFixed(2)} VNĐ`;
+          break;
+
+        case "6": // Trái tim
+          let heart = "";
+          for (let y = 1.5; y > -1.5; y -= 0.15) {
+            for (let x = -1.5; x < 1.5; x += 0.05) {
+              let a = x * x + y * y - 1;
+              heart += (a * a * a - x * x * y * y * y <= 0) ? "*" : " ";
+            }
+            heart += "\n";
+          }
+          output = heart;
+          break;
+      }
+
+      kq.textContent = output;
+    }
+  </script>
+</body>
+</html>

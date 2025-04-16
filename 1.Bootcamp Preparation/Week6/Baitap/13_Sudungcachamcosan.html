@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập JavaScript chuỗi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        h2 {
+            color: darkblue;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+        .result {
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bài tập JavaScript với Chuỗi</h1>
+
+    <!-- Bài 1 -->
+    <div class="section">
+        <h2>Bài 1: Nối các phần tử trong mảng thành chuỗi</h2>
+        <p>Mảng: <code>["Red", "Green", "White", "Black"]</code></p>
+        <button onclick="joinArray()">Chạy chương trình</button>
+        <div class="result" id="result1"></div>
+    </div>
+
+    <!-- Bài 2 -->
+    <div class="section">
+        <h2>Bài 2: Chèn dấu "-" giữa các số chẵn</h2>
+        <input type="text" id="evenInput" placeholder="Nhập chuỗi số, ví dụ: 025468">
+        <br>
+        <button onclick="insertDashes()">Chạy chương trình</button>
+        <div class="result" id="result2"></div>
+    </div>
+
+    <!-- Bài 3 -->
+    <div class="section">
+        <h2>Bài 3: Chuyển đổi chữ thường sang chữ hoa và ngược lại</h2>
+        <input type="text" id="caseInput" placeholder="Nhập chuỗi, ví dụ: The Quick Brown Fox">
+        <br>
+        <button onclick="swapCase()">Chạy chương trình</button>
+        <div class="result" id="result3"></div>
+    </div>
+
+    <script>
+        // Bài 1
+        function joinArray() {
+            let myColor = ["Red", "Green", "White", "Black"];
+            document.getElementById("result1").innerText = myColor.join(",");
+        }
+
+        // Bài 2
+        function insertDashes() {
+            let input = document.getElementById("evenInput").value;
+            let result = input[0];
+
+            for (let i = 1; i < input.length; i++) {
+                if (parseInt(input[i - 1]) % 2 === 0 && parseInt(input[i]) % 2 === 0) {
+                    result += "-" + input[i];
+                } else {
+                    result += input[i];
+                }
+            }
+
+            document.getElementById("result2").innerText = result;
+        }
+
+        // Bài 3
+        function swapCase() {
+            let input = document.getElementById("caseInput").value;
+            let swapped = "";
+
+            for (let i = 0; i < input.length; i++) {
+                let char = input[i];
+                if (char === char.toUpperCase()) {
+                    swapped += char.toLowerCase();
+                } else {
+                    swapped += char.toUpperCase();
+                }
+            }
+
+            document.getElementById("result3").innerText = swapped;
+        }
+    </script>
+</body>
+</html>

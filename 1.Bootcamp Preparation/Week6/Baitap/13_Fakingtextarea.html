@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faking Textarea</title>
+</head>
+<body>
+    <h1>Type anything slowly</h1>
+    <textarea id="khungNhap" rows="10" cols="50" disabled></textarea>
+
+    <script>
+        // Mang chua cac dong chu co dinh
+        const mangChu = [
+            "Xin chao ban!",
+            "Day la mot ung dung vui.",
+            "Ban co the go bat ky thu gi.",
+            "Nhung chi hien thi dong chu co dinh.",
+            "Chuc ban mot ngay tot lanh!"
+        ];
+
+        // Chi so hien tai cua mang
+        let chiSoHienTai = 0;
+
+        // Ham xu ly su kien go phim
+        function xuLyGoPhim() {
+            const khungNhap = document.getElementById("khungNhap");
+
+            if (chiSoHienTai < mangChu.length) {
+                khungNhap.value += mangChu[chiSoHienTai] + "\n";
+                chiSoHienTai++;
+            } else {
+                alert("Ban da go het cac dong chu!");
+            }
+        }
+
+        // Lang nghe su kien go phim
+        document.addEventListener("keydown", xuLyGoPhim);
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyen tap mang</title>
+    <script>
+        function bai1() {
+            let mang = [5, 12, 8, 20, 15, 3, 10, 7, 18, 11];
+            let dem = 0;
+            for (let so of mang) {
+                if (so >= 10) dem++;
+            }
+            alert(`Co ${dem} so nguyen lon hon hoac bang 10`);
+        }
+
+        function bai2() {
+            let mang = [5, 12, 8, 20, 15, 3, 10, 7, 18, 11];
+            let max = Math.max(...mang);
+            let viTri = mang.indexOf(max);
+            alert(`Gia tri lon nhat: ${max}, o vi tri: ${viTri}`);
+        }
+
+        function bai3() {
+            let mang = [5, 12, 8, 20, 15, 3, 10, 7, 18, 11];
+            let max = Math.max(...mang);
+            let tong = mang.reduce((a, b) => a + b, 0);
+            let trungBinh = tong / mang.length;
+            alert(`Gia tri lon nhat: ${max}, Gia tri trung binh: ${trungBinh}`);
+        }
+
+        function bai4() {
+            let mang = [5, 12, 8, 20, 15, 3, 10, 7, 18, 11];
+            let daoNguoc = mang.reverse();
+            alert(`Mang dao nguoc: ${daoNguoc}`);
+        }
+
+        function bai5() {
+            let chuoi = "-5, 12, -8, 20, -15, 3, 10, -7, 18, 11";
+            let mang = chuoi.split(',').map(Number);
+            let dem = mang.filter(so => so < 0).length;
+            alert(`Co ${dem} so nguyen am trong chuoi`);
+        }
+
+        function bai6() {
+            let mang = [5, 12, 8, 20, 15, 3, 10, 7, 18, 11];
+            let v = parseInt(prompt("Nhap so nguyen v:"));
+            if (mang.includes(v)) {
+                alert("v is in the array");
+            } else {
+                alert("v is not in the array");
+            }
+        }
+
+        function bai7() {
+            let mang = [5, 12, 8, 20, 15, 3, 10, 7, 18, 11];
+            let v = parseInt(prompt("Nhap so nguyen v:"));
+            let index = mang.indexOf(v);
+            if (index !== -1) {
+                mang.splice(index, 1);
+                mang.push(0);
+                alert(`Mang sau khi xoa v: ${mang}`);
+            } else {
+                alert("v is not in the array");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Luyen tap mang</h1>
+    <button onclick="bai1()">Bai 1</button>
+    <button onclick="bai2()">Bai 2</button>
+    <button onclick="bai3()">Bai 3</button>
+    <button onclick="bai4()">Bai 4</button>
+    <button onclick="bai5()">Bai 5</button>
+    <button onclick="bai6()">Bai 6</button>
+    <button onclick="bai7()">Bai 7</button>
+</body>
+</html>

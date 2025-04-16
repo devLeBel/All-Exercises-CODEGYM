@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ham kiem tra so nguyen to</title>
+</head>
+<body>
+    <h1>Kiểm tra số nguyên tố</h1>
+    <p>Danh sách các số nguyên tố nhỏ hơn 10.000:</p>
+    <ul id="danh_sach_so_nguyen_to"></ul>
+
+    <script>
+        // Ham kiem tra so nguyen to
+        function laSoNguyenTo(so) {
+            if (so < 2) return false;
+            for (let i = 2; i <= Math.sqrt(so); i++) {
+                if (so % i === 0) return false;
+            }
+            return true;
+        }
+
+        // Mang chua cac so nguyen to nho hon 10.000
+        let danhSachSoNguyenTo = [];
+        for (let i = 2; i < 10000; i++) {
+            if (laSoNguyenTo(i)) {
+                danhSachSoNguyenTo.push(i);
+            }
+        }
+
+        // Hien thi danh sach so nguyen to len giao dien
+        let ulElement = document.getElementById("danh_sach_so_nguyen_to");
+        danhSachSoNguyenTo.forEach(so => {
+            let liElement = document.createElement("li");
+            liElement.textContent = so;
+            ulElement.appendChild(liElement);
+        });
+    </script>
+</body>
+</html>

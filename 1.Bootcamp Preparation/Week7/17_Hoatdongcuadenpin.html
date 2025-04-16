@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoạt động của đèn pin</title>
+</head>
+<body>
+    <script>
+        // Lớp Pin (Battery)
+        let Pin = function () {
+            this.nangLuong = 0;
+
+            this.datNangLuong = function (nangLuong) {
+                this.nangLuong = nangLuong;
+            };
+
+            this.layNangLuong = function () {
+                return this.nangLuong;
+            };
+
+            this.giamNangLuong = function () {
+                if (this.nangLuong > 0) {
+                    this.nangLuong--;
+                }
+            };
+        };
+
+        // Lớp Đèn Pin (FlashLamp)
+        let DenPin = function () {
+            this.trangThai = false;
+            this.pin = null;
+
+            this.lapPin = function (pin) {
+                this.pin = pin;
+            };
+
+            this.batTat = function () {
+                this.trangThai = !this.trangThai;
+                if (this.trangThai && this.pin) {
+                    this.pin.giamNangLuong();
+                }
+            };
+
+            this.hienThiThongTinPin = function () {
+                if (this.pin) {
+                    return this.pin.layNangLuong();
+                }
+                return 0;
+            };
+        };
+
+        // Thử nghiệm
+        let pinMoi = new Pin();
+        pinMoi.datNangLuong(10);
+
+        let denPinMoi = new DenPin();
+        denPinMoi.lapPin(pinMoi);
+
+        console.log("Năng lượng pin ban đầu:", denPinMoi.hienThiThongTinPin());
+
+        denPinMoi.batTat(); // Bật đèn
+        console.log("Năng lượng pin sau khi bật:", denPinMoi.hienThiThongTinPin());
+
+        denPinMoi.batTat(); // Tắt đèn
+        console.log("Năng lượng pin sau khi tắt:", denPinMoi.hienThiThongTinPin());
+    </script>
+</body>
+</html>

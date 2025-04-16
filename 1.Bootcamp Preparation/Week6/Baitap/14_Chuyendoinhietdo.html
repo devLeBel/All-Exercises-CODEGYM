@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyen doi nhiet do</title>
+</head>
+<body>
+    <h1>Chuyen doi nhiet do</h1>
+    <p>Nhap gia tri nhiet do Fahrenheit de chuyen doi sang Celcius:</p>
+    <label for="nhapFahrenheit">Fahrenheit:</label>
+    <input id="nhapFahrenheit" type="number" placeholder="Nhap Fahrenheit" oninput="chuyenDoiNhietDo(this.value)">
+    <p>Celcius: <span id="xuatCelcius">0</span></p>
+
+    <script>
+        function chuyenDoiNhietDo(giaTriFahrenheit) {
+            let giaTriCelcius = (parseFloat(giaTriFahrenheit) - 32) / 1.8;
+            document.getElementById("xuatCelcius").innerHTML = giaTriCelcius.toFixed(2);
+        }
+    </script>
+</body>
+</html>

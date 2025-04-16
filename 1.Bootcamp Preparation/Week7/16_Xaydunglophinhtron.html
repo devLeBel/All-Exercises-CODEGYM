@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai tap Hinh Tron</title>
+</head>
+<body>
+    <h2>Xay dung lop Hinh Tron</h2>
+
+    <script>
+        // Dinh nghia lop HinhTron
+        function HinhTron(ban_kinh) {
+            this.ban_kinh = ban_kinh;
+
+            this.layBanKinh = function() {
+                return this.ban_kinh;
+            };
+
+            this.tinhDienTich = function() {
+                return Math.PI * this.ban_kinh * this.ban_kinh;
+            };
+        }
+
+        // Tao doi tuong hinh tron
+        let hinh1 = new HinhTron(2);
+        let ban_kinh = hinh1.layBanKinh();
+        let dien_tich = hinh1.tinhDienTich();
+
+        // Hien thi ket qua
+        document.write("<p>Ban kinh: " + ban_kinh + "</p>");
+        document.write("<p>Dien tich: " + dien_tich.toFixed(2) + "</p>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyen tap mang 2 chieu</title>
+</head>
+<body>
+    <h1>Bai tap mang 2 chieu</h1>
+    <button onclick="bai1()">Bai 1</button>
+    <button onclick="bai2()">Bai 2</button>
+    <button onclick="bai3()">Bai 3</button>
+    <button onclick="bai4()">Bai 4</button>
+    <div id="ketqua"></div>
+
+    <script>
+        function bai1() {
+            let a = [
+                [1, 2, 1, 24],
+                [8, 11, 9, 4],
+                [7, 0, 7, 27],
+                [7, 4, 28, 14],
+                [3, 10, 26, 7],
+            ];
+            let ketqua = document.getElementById("ketqua");
+            ketqua.innerHTML = ""; // Xoa ket qua cu
+            for (let i = 0; i < a.length; i++) {
+                ketqua.innerHTML += `row ${i}<br>`;
+                for (let j = 0; j < a[i].length; j++) {
+                    ketqua.innerHTML += `${a[i][j]}<br>`;
+                }
+            }
+        }
+
+        function bai2() {
+            let mang = ['c', 's', 'c', '2', '6', '1'];
+            let ketqua = mang.reverse().join('');
+            document.getElementById("ketqua").innerHTML = `Mang dao nguoc: ${ketqua}`;
+        }
+
+        function bai3() {
+            let mang = ['c', 's', 'c', '2', '6', '1'];
+            let dem = 0;
+            for (let i = 0; i < mang.length; i++) {
+                if (!isNaN(mang[i])) { // Kiem tra ky tu co phai so
+                    dem++;
+                }
+            }
+            document.getElementById("ketqua").innerHTML = `So ky tu so trong mang: ${dem}`;
+        }
+
+        function bai4() {
+            let chuoi = "CodeGym";
+            let dem = chuoi.length;
+            document.getElementById("ketqua").innerHTML = `So ky tu trong chuoi: ${dem}`;
+        }
+    </script>
+</body>
+</html>

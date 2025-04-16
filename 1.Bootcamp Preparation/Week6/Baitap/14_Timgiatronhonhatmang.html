@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim gia tri nho nhat cua mang</title>
+</head>
+<body>
+    <h1>Tim gia tri nho nhat cua mang</h1>
+    <script>
+        // Ham tim gia tri nho nhat trong mang
+        function timGiaTriNhoNhat(mang) {
+            if (mang.length === 0) return -1; // Tra ve -1 neu mang rong
+
+            let nhoNhat = mang[0];
+            for (let i = 1; i < mang.length; i++) {
+                if (mang[i] < nhoNhat) {
+                    nhoNhat = mang[i];
+                }
+            }
+            return nhoNhat;
+        }
+
+        // Cac mang de kiem tra
+        let mang1 = [5, 1, 8, -3, 7, 8];
+        let mang2 = [7, 12, 6, 9, 20, 36, 98];
+        let mang3 = [];
+        let mang4 = [0, 0, 0, 0, 0, 0];
+
+        // Goi ham va hien thi ket qua
+        console.log("Gia tri nho nhat trong mang1:", timGiaTriNhoNhat(mang1));
+        console.log("Gia tri nho nhat trong mang2:", timGiaTriNhoNhat(mang2));
+        console.log("Gia tri nho nhat trong mang3:", timGiaTriNhoNhat(mang3));
+        console.log("Gia tri nho nhat trong mang4:", timGiaTriNhoNhat(mang4));
+    </script>
+</body>
+</html>

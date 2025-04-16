@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra từ đối xứng</title>
+</head>
+<body>
+    <h1>Kiểm tra từ đối xứng</h1>
+    <p>Nhập một chuỗi để kiểm tra:</p>
+    <input type="text" id="chuoi" placeholder="Nhập chuỗi">
+    <button onclick="kiemTraDoiXung()">Kiểm tra</button>
+    <p id="ketQua"></p>
+
+    <script>
+        // Hàm kiểm tra chuỗi đối xứng
+        function laDoiXung(chuoi) {
+            if (chuoi.length <= 1) {
+                return true;
+            }
+            if (chuoi[0] !== chuoi[chuoi.length - 1]) {
+                return false;
+            }
+            return laDoiXung(chuoi.slice(1, -1));
+        }
+
+        // Hàm xử lý khi nhấn nút kiểm tra
+        function kiemTraDoiXung() {
+            let chuoi = document.getElementById("chuoi").value;
+            let ketQua = laDoiXung(chuoi) ? "Chuỗi là đối xứng." : "Chuỗi không phải là đối xứng.";
+            document.getElementById("ketQua").innerText = ketQua;
+        }
+    </script>
+</body>
+</html>

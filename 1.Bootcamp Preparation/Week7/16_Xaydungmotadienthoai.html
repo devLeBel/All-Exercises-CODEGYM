@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lop Mo ta Dien Thoai</title>
+</head>
+<body>
+  <h2>Mo ta lop Mobile</h2>
+
+  <script>
+    function Mobile(ten_dien_thoai) {
+      this.ten = ten_dien_thoai;
+      this.trang_thai_bat = false;
+      this.pin = 100;
+      this.hop_thu_den = [];
+      this.tin_da_gui = [];
+      this.tin_nhan_dang_soan = "";
+
+      // Bat dien thoai
+      this.bat = function() {
+        if (this.pin > 0) {
+          this.trang_thai_bat = true;
+        }
+      };
+
+      // Tat dien thoai
+      this.tat = function() {
+        this.trang_thai_bat = false;
+      };
+
+      // Kiem tra trang thai
+      this.kiem_tra_trang_thai = function() {
+        return this.trang_thai_bat;
+      };
+
+      // Soan tin nhan
+      this.soan_tin = function(noi_dung) {
+        if (this.trang_thai_bat && this.pin > 0) {
+          this.tin_nhan_dang_soan = noi_dung;
+          this.pin--;
+        }
+      };
+
+      // Gui tin cho dien thoai khac
+      this.gui_tin = function(dien_thoai_khac) {
+        if (this.trang_thai_bat && this.pin > 0) {
+          dien_thoai_khac.nhan_tin(this.tin_nhan_dang_soan);
+          this.tin_da_gui.push(this.tin_nhan_dang_soan);
+          this.tin_nhan_dang_soan = "";
+          this.pin--;
+        }
+      };
+
+      // Nhan tin tu dien thoai khac
+      this.nhan_tin = function(noi_dung) {
+        if (this.trang_thai_bat) {
+          this.hop_thu_den.push(noi_dung);
+        }
+      };
+
+      // Xem tin da gui
+      this.xem_tin_da_gui = function() {
+        return this.tin_da_gui;
+      };
+
+      // Xem hop thu den
+      this.xem_hop_thu_den = function() {
+        return this.hop_thu_den;
+      };
+    }
+
+    // Tao hai dien thoai
+    let nokia = new Mobile("Nokia");
+    let iphone = new Mobile("iPhone");
+
+    nokia.bat();
+    iphone.bat();
+
+    nokia.soan_tin("Chao iPhone!");
+    nokia.gui_tin(iphone);
+
+    document.write("<h3>Hop thu den cua iPhone:</h3>");
+    document.write("<pre>" + JSON.stringify(iphone.xem_hop_thu_den(), null, 2) + "</pre>");
+
+    document.write("<h3>Tin da gui tu Nokia:</h3>");
+    document.write("<pre>" + JSON.stringify(nokia.xem_tin_da_gui(), null, 2) + "</pre>");
+  </script>
+</body>
+</html>

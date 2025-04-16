@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tao va Goi Ham</title>
+</head>
+<body>
+    <script>
+        // Ham xu ly xac nhan
+        function xuLyXacNhan(traLoi) {
+            let ketQua = "";
+            if (traLoi) {
+                ketQua = "Tuyet voi. Chung ta se choi mot van co vua.";
+            } else {
+                ketQua = "Co le de sau nhe.";
+            }
+            return ketQua;
+        }
+
+        // Goi ham xac nhan va hien thi ket qua
+        let traLoiXacNhan = confirm("Ban co muon choi mot van co vua khong?");
+        let ketQuaCuoi = xuLyXacNhan(traLoiXacNhan);
+        alert(ketQuaCuoi);
+
+        // Mang vi du
+        let danhSachMonHoc = ["Toan", "Van", "Anh", "Ly", "Hoa"];
+        console.log("Danh sach mon hoc:", danhSachMonHoc);
+
+        // Ham hien thi danh sach mon hoc
+        function hienThiDanhSachMonHoc(mang) {
+            for (let i = 0; i < mang.length; i++) {
+                console.log("Mon hoc thu " + (i + 1) + ": " + mang[i]);
+            }
+        }
+
+        // Goi ham hien thi danh sach mon hoc
+        hienThiDanhSachMonHoc(danhSachMonHoc);
+    </script>
+</body>
+</html>

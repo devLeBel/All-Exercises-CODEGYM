@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Thuc hanh lop NgayThang</title>
+</head>
+<body>
+
+    <h2>Thuc hanh tao lop NgayThang</h2>
+
+    <script>
+        let LopNgayThang = function(ngay, thang, nam) {
+            this.ngay = ngay;
+            this.thang = thang;
+            this.nam = nam;
+
+            this.layNgay = function() {
+                return this.ngay;
+            }
+
+            this.layThang = function() {
+                return this.thang;
+            }
+
+            this.layNam = function() {
+                return this.nam;
+            }
+
+            this.datNgay = function(ngay) {
+                this.ngay = ngay;
+            }
+
+            this.datThang = function(thang) {
+                this.thang = thang;
+            }
+
+            this.datNam = function(nam) {
+                this.nam = nam;
+            }
+
+            this.dinhDangChuoi = function() {
+                let ngayChuoi = this.ngay < 10 ? "0" + this.ngay : this.ngay;
+                let thangChuoi = this.thang < 10 ? "0" + this.thang : this.thang;
+                return ngayChuoi + "/" + thangChuoi + "/" + this.nam;
+            }
+        };
+
+        // Khoi tao doi tuong ngay
+        let ngaySinh = new LopNgayThang(2, 2, 2007);
+
+        // Hien thi thong tin
+        let ngay = ngaySinh.layNgay();
+        let thang = ngaySinh.layThang();
+        let nam = ngaySinh.layNam();
+
+        document.write("<p>Ngay: " + ngay + "</p>");
+        document.write("<p>Thang: " + thang + "</p>");
+        document.write("<p>Nam: " + nam + "</p>");
+        document.write("<p>Dinh dang: " + ngaySinh.dinhDangChuoi() + "</p>");
+    </script>
+
+</body>
+</html>

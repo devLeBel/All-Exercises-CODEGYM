@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caro</title>
+</head>
+<body>
+    <h1>Trò chơi Caro</h1>
+    <table id="bang"></table>
+    <div id="nguoiThang"></div>
+    <script>
+        const kichThuocBang = 3;
+        const bang = [];
+        let nguoiChoiHienTai = 'X';
+
+        function taoBang() {
+            const table = document.getElementById('bang');
+            for (let hang = 0; hang < kichThuocBang; hang++) {
+                const dong = [];
+                const tr = document.createElement('tr');
+                for (let cot = 0; cot < kichThuocBang; cot++) {
+                    const o = document.createElement('td');
+                    o.style.width = '50px';
+                    o.style.height = '50px';
+                    o.style.textAlign = 'center';
+                    o.style.verticalAlign = 'middle';
+                    o.style.fontSize = '24px';
+                    o.style.border = '1px solid black';
+                    o.addEventListener('click', () => danhCo(hang, cot, o));
+                    tr.appendChild(o);
+                    dong.push('');
+                }
+                table.appendChild(tr);
+                bang.push(dong);
+            }
+        }
+
+        function danhCo(hang, cot, o) {
+            if (bang[hang][cot] === '') {
+                bang[hang][cot] = nguoiChoiHienTai;
+                o.textContent = nguoiChoiHienTai;
+                if (kiemTraThang(hang, cot)) {
+                    document.getElementById('nguoiThang').textContent = `${nguoiChoiHienTai} thắng!`;
+                    khoaBang();
+                } else {
+                    nguoiChoiHienTai = nguoiChoiHienTai === 'X' ? 'O' : 'X';
+                }
+            }
+        }
+
+        function kiemTraThang(hang, cot) {
+            // Kiểm tra hàng
+            if (bang[hang].every(o => o === nguoiChoiHienTai)) return true;
+            // Kiểm tra cột
+            if (bang.every(dong => dong[cot] === nguoiChoiHienTai)) return true;
+            // Kiểm tra đường chéo
+            if (hang === cot && bang.every((_, i) => bang[i][i] === nguoiChoiHienTai)) return true;
+            // Kiểm tra đường chéo ngược
+            if (hang + cot === kichThuocBang - 1 && bang.every((_, i) => bang[i][kichThuocBang - 1 - i] === nguoiChoiHienTai)) return true;
+            return false;
+        }
+
+        function khoaBang() {
+            const oCo = document.querySelectorAll('td');
+            oCo.forEach(o => o.style.pointerEvents = 'none');
+        }
+
+        taoBang();
+    </script>
+</body>
+</html>

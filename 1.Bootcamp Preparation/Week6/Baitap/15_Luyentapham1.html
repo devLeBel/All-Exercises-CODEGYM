@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyen tap ham</title>
+</head>
+<body>
+    <h1>Bai tap luyen tap ham</h1>
+    <button onclick="bai1()">Bai 1</button>
+    <button onclick="bai2()">Bai 2</button>
+    <button onclick="bai3()">Bai 3</button>
+    <button onclick="bai4()">Bai 4</button>
+    <button onclick="bai5()">Bai 5</button>
+
+    <script>
+        // Bai 1
+        function bai1() {
+            document.body.innerHTML += "<p>Xin chao!</p>";
+        }
+
+        // Bai 2
+        function bai2() {
+            let so = parseInt(prompt("Nhap mot so:"));
+            let ketQua = so + 1;
+            document.body.innerHTML += `<p>So sau khi tang la: ${ketQua}</p>`;
+        }
+
+        // Bai 3
+        function bai3() {
+            let so1 = parseInt(prompt("Nhap so thu nhat:"));
+            let so2 = parseInt(prompt("Nhap so thu hai:"));
+            let ketQua = so1 > so2 ? so1 : so2;
+            document.body.innerHTML += `<p>So lon nhat la: ${ketQua}</p>`;
+        }
+
+        // Bai 4
+        function bai4() {
+            function tinhTong(a, b) {
+                alert("Bat dau tinh tong");
+                let ketQua = a + b;
+                alert("Ket qua la: " + ketQua);
+                return ketQua;
+            }
+            let so1 = parseInt(prompt("Nhap so thu nhat:"));
+            let so2 = parseInt(prompt("Nhap so thu hai:"));
+            tinhTong(so1, so2);
+        }
+
+        // Bai 5
+        function bai5() {
+            let cacChomSao = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+            let cacChomSao2 = ["Ursa Minor", "Taurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+            let tenSao = prompt("Nhap ten ngoi sao:");
+            let index = cacChomSao.indexOf(tenSao);
+            if (index !== -1) {
+                alert("Chom sao tuong ung la: " + cacChomSao2[index]);
+            } else {
+                alert("Khong tim thay ngoi sao!");
+            }
+        }
+    </script>
+</body>
+</html>
