@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trang chủ - MusicMini</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h1>MusicMini</h1>
+    <nav>
+      <a href="#"><span>🏆</span>&nbsp;Top 100</a>
+      <a href="#"><span>📈</span>&nbsp;Bang xep hang</a>
+      <a href="#"><span>🎤</span>&nbsp;Nghe si</a>
+      <a href="#"><span>💿</span>&nbsp;Album</a>
+      <a href="#"><span>⭐</span>&nbsp;Yeu thich</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="header">
+      <h2>Bai hat tieu bieu</h2>
+      <form class="search-box" action="search.html" method="get">
+        <input type="text" name="q" placeholder="Tim bai hat, nghe si...">
+        <button type="submit">🔍</button>
+      </form>
+    </div>
+    <div class="song-list" id="dsBaiHat"></div>
+  </div>
+
+  <script>
+    // 1. Ham tra ve mang thong tin cac bai hat
+    function layDanhSachBaiHat() {
+      return [
+        { id: 1, tieuDe: "Tinh Dau Qua Chen", ngheSi: "Quang Hung MasterD", cover: "images/cover1.jpg", file: "audio/song1.mp3" },
+        { id: 2, tieuDe: "Kim Phut, Kim Gio", ngheSi: "HIEUTHUHAI", cover: "images/cover2.jpg", file: "audio/song2.mp3" },
+        { id: 3, tieuDe: "Catch Me If You Can", ngheSi: "Negav", cover: "images/cover3.jpg", file: "audio/song3.mp3" },
+        { id: 4, tieuDe: "Ngao Ngo", ngheSi: "ERIK", cover: "images/cover4.jpg", file: "audio/song4.mp3" },
+        { id: 5, tieuDe: "Doa Phu Dung Cuoi Cung", ngheSi: "Duc Phuc", cover: "images/cover5.jpg", file: "audio/song5.mp3" }
+      ];
+    }
+  
+    // 2. Ham hien thi danh sach bai hat vao container
+    function hienThiDanhSach(baiHatArr, containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+
+      baiHatArr.forEach(function(bh) {
+        container.innerHTML += `
+          <a href="player.html?song=${bh.id}" class="song-item">
+            <img src="${bh.cover}" alt="${bh.tieuDe}">
+            <div class="info">
+              <h4>${bh.tieuDe}</h4>
+              <p>${bh.ngheSi}</p>
+            </div>
+          </a>
+        `;
+      });
+    }
+  
+    // Khi trang load, hien thi tat ca bai tieu bieu
+    document.addEventListener("DOMContentLoaded", function() {
+      const ds = layDanhSachBaiHat();
+      hienThiDanhSach(ds, "dsBaiHat");
+    });
+  </script>
+  
+
+</body>
+</html>

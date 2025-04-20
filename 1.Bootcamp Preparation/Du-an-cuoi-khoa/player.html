@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Player - MusicMini</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h1>MusicMini</h1>
+    <nav>
+      <a href="index.html">🏠 Trang chu</a>
+      <a href="#"><span>🏆</span>&nbsp;Top 100</a>
+      <a href="#"><span>📈</span>&nbsp;Bang xep hang</a>
+      <a href="#"><span>🎤</span>&nbsp;Nghe si</a>
+      <a href="#"><span>💿</span>&nbsp;Album</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="player-container" id="noiDungPlayer"></div>
+  </div>
+
+  <script>
+    function layDanhSachBaiHat() {
+      return [
+        { id: 1, tieuDe: "Tinh Dau Qua Chen", ngheSi: "Quang Hung MasterD", cover: "images/cover1.jpg", file: "audio/song1.mp3" },
+        { id: 2, tieuDe: "Kim Phut, Kim Gio", ngheSi: "HIEUTHUHAI", cover: "images/cover2.jpg", file: "audio/song2.mp3" },
+        { id: 3, tieuDe: "Catch Me If You Can", ngheSi: "Negav", cover: "images/cover3.jpg", file: "audio/song3.mp3" },
+        { id: 4, tieuDe: "Ngao Ngo", ngheSi: "ERIK", cover: "images/cover4.jpg", file: "audio/song4.mp3" },
+        { id: 5, tieuDe: "Doa Phu Dung Cuoi Cung", ngheSi: "Duc Phuc", cover: "images/cover5.jpg", file: "audio/song5.mp3" }
+      ];
+    }
+
+    function hienThiPlayer(bh) {
+      const khuVuc = document.getElementById("noiDungPlayer");
+      khuVuc.innerHTML = `
+        <img src="${bh.cover}" alt="${bh.tieuDe}">
+        <h2>${bh.tieuDe}</h2>
+        <h3>${bh.ngheSi}</h3>
+        <audio controls autoplay>
+          <source src="${bh.file}" type="audio/mpeg">
+          Trinh duyet khong ho tro audio.
+        </audio>`;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(location.search);
+    const id = parseInt(params.get("song")) || 1;
+    const ds = layDanhSachBaiHat();
+    const bh = ds.find(function(x) {
+        return x.id === id;
+    }) || ds[0];
+    hienThiPlayer(bh);
+    });
+
+  </script>
+
+</body>
+</html>
