@@ -22,6 +22,7 @@
   <!-- MAIN -->
   <div class="main">
     <div class="header">
+      <a href="add.html" style="background:#1db954;padding:8px 15px;border-radius:20px;text-decoration:none;color:white;">➕ Them bai hat</a>
       <h2>Bai hat tieu bieu</h2>
       <form class="search-box" action="search.html" method="get">
         <input type="text" name="q" placeholder="Tim bai hat, nghe si...">
@@ -31,17 +32,13 @@
     <div class="song-list" id="dsBaiHat"></div>
   </div>
 
-  <script>
+  <script src="data.js"></script>
+<script>
     // 1. Ham tra ve mang thong tin cac bai hat
-    function layDanhSachBaiHat() {
-      return [
-        { id: 1, tieuDe: "Tinh Dau Qua Chen", ngheSi: "Quang Hung MasterD", cover: "images/cover1.jpg", file: "audio/song1.mp3" },
-        { id: 2, tieuDe: "Kim Phut, Kim Gio", ngheSi: "HIEUTHUHAI", cover: "images/cover2.jpg", file: "audio/song2.mp3" },
-        { id: 3, tieuDe: "Catch Me If You Can", ngheSi: "Negav", cover: "images/cover3.jpg", file: "audio/song3.mp3" },
-        { id: 4, tieuDe: "Ngao Ngo", ngheSi: "ERIK", cover: "images/cover4.jpg", file: "audio/song4.mp3" },
-        { id: 5, tieuDe: "Doa Phu Dung Cuoi Cung", ngheSi: "Duc Phuc", cover: "images/cover5.jpg", file: "audio/song5.mp3" }
-      ];
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+      const ds = layDanhSachBaiHat();
+      hienThiDanhSach(ds, "dsBaiHat");
+    });
   
     // 2. Ham hien thi danh sach bai hat vao container
     function hienThiDanhSach(baiHatArr, containerId) {

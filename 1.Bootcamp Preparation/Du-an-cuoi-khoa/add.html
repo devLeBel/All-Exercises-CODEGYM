@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Them bai hat - MusicMini</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+    .form-group input { width: 100%; padding: 8px; border-radius: 8px; border: none; }
+    .preview-img { margin-top: 10px; width: 150px; height: 150px; object-fit: cover; border-radius: 8px; background: #333; display: block; }
+    button[type="submit"] {
+      background: #1db954;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button[type="submit"]:hover {
+      background: #17a54a;
+    }
+  </style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <h1>MusicMini</h1>
+  <nav>
+    <a href="index.html">🏠 Trang chu</a>
+  </nav>
+</aside>
+
+<div class="main">
+  <h2>Them bai hat moi</h2>
+  <form id="formThem">
+    <div class="form-group">
+      <label for="tieuDe">Tieu de bai hat:</label>
+      <input type="text" id="tieuDe" required>
+    </div>
+    <div class="form-group">
+      <label for="ngheSi">Nghe si:</label>
+      <input type="text" id="ngheSi" required>
+    </div>
+    <div class="form-group">
+      <label for="coverFile">Chon anh cover:</label>
+      <input type="file" id="coverFile" accept="image/*" required>
+      <img id="previewCover" class="preview-img" src="" alt="Preview">
+    </div>
+    <div class="form-group">
+      <label for="audioFile">Chon file nhac:</label>
+      <input type="file" id="audioFile" accept="audio/*" required>
+      <p id="audioFileName"></p>
+    </div>
+    <button type="submit">➕ Them bai hat</button>
+  </form>
+</div>
+
+<script src="data.js"></script>
+<script>
+document.getElementById("coverFile").addEventListener("change", function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      document.getElementById("previewCover").src = evt.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+document.getElementById("audioFile").addEventListener("change", function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    document.getElementById("audioFileName").textContent = "Da chon: " + file.name;
+  }
+});
+
+document.getElementById("formThem").addEventListener("submit", function(e) {
+  e.preventDefault();
+  
+  const tieuDe = document.getElementById("tieuDe").value.trim();
+  const ngheSi = document.getElementById("ngheSi").value.trim();
+  const coverInput = document.getElementById("coverFile");
+  const audioInput = document.getElementById("audioFile");
+
+  if (!coverInput.files.length || !audioInput.files.length) {
+    alert("Vui long chon du file anh va nhac!");
+    return;
+  }
+
+  const coverFile = coverInput.files[0];
+  const audioFile = audioInput.files[0];
+
+  const coverPath = "images/" + coverFile.name;
+  const audioPath = "audio/" + audioFile.name;
+
+  const ds = layDanhSachBaiHat();
+  const moi = {
+    id: ds.length > 0 ? ds[ds.length-1].id + 1 : 1,
+    tieuDe: tieuDe,
+    ngheSi: ngheSi,
+    cover: coverPath,
+    file: audioPath
+  };
+
+  ds.push(moi);
+  luuDanhSachBaiHat(ds);
+  alert("Da them bai hat thanh cong!");
+  window.location.href = "index.html";
+});
+</script>
+
+</body>
+</html>

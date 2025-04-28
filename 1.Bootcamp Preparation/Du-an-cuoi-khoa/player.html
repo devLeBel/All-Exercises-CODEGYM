@@ -7,56 +7,145 @@
 </head>
 <body>
 
-  <!-- SIDEBAR -->
+  <!-- THANH SIDEBAR -->
   <aside class="sidebar">
     <h1>MusicMini</h1>
     <nav>
-      <a href="index.html">🏠 Trang chu</a>
+      <a href="index.html">🏠 Trang chủ</a>
       <a href="#"><span>🏆</span>&nbsp;Top 100</a>
-      <a href="#"><span>📈</span>&nbsp;Bang xep hang</a>
-      <a href="#"><span>🎤</span>&nbsp;Nghe si</a>
+      <a href="#"><span>📈</span>&nbsp;Bảng xếp hạng</a>
+      <a href="#"><span>🎤</span>&nbsp;Nghệ sĩ</a>
       <a href="#"><span>💿</span>&nbsp;Album</a>
     </nav>
   </aside>
 
-  <!-- MAIN -->
+  <!-- KHU VỰC CHÍNH -->
   <div class="main">
     <div class="player-container" id="noiDungPlayer"></div>
   </div>
 
-  <script>
-    function layDanhSachBaiHat() {
-      return [
-        { id: 1, tieuDe: "Tinh Dau Qua Chen", ngheSi: "Quang Hung MasterD", cover: "images/cover1.jpg", file: "audio/song1.mp3" },
-        { id: 2, tieuDe: "Kim Phut, Kim Gio", ngheSi: "HIEUTHUHAI", cover: "images/cover2.jpg", file: "audio/song2.mp3" },
-        { id: 3, tieuDe: "Catch Me If You Can", ngheSi: "Negav", cover: "images/cover3.jpg", file: "audio/song3.mp3" },
-        { id: 4, tieuDe: "Ngao Ngo", ngheSi: "ERIK", cover: "images/cover4.jpg", file: "audio/song4.mp3" },
-        { id: 5, tieuDe: "Doa Phu Dung Cuoi Cung", ngheSi: "Duc Phuc", cover: "images/cover5.jpg", file: "audio/song5.mp3" }
-      ];
-    }
-
-    function hienThiPlayer(bh) {
-      const khuVuc = document.getElementById("noiDungPlayer");
-      khuVuc.innerHTML = `
-        <img src="${bh.cover}" alt="${bh.tieuDe}">
-        <h2>${bh.tieuDe}</h2>
-        <h3>${bh.ngheSi}</h3>
-        <audio controls autoplay>
-          <source src="${bh.file}" type="audio/mpeg">
-          Trinh duyet khong ho tro audio.
-        </audio>`;
-    }
-
+  <script src="data.js"></script>
+<script>
+    // 1. Trả về danh sách bài hát
     document.addEventListener("DOMContentLoaded", function() {
-    const params = new URLSearchParams(location.search);
-    const id = parseInt(params.get("song")) || 1;
-    const ds = layDanhSachBaiHat();
-    const bh = ds.find(function(x) {
-        return x.id === id;
-    }) || ds[0];
-    hienThiPlayer(bh);
+      const ds = layDanhSachBaiHat();
+      hienThiDanhSach(ds, "dsBaiHat");
     });
 
+    // 2. Chuyển số giây thành chuỗi MM:SS
+    function chuyenThoiGian(sec) {
+      var phut = Math.floor(sec / 60);
+      var giay = Math.floor(sec % 60);
+      if (giay < 10) { giay = "0" + giay; }
+      return phut + ":" + giay;
+    }
+
+    // 3. Tạo giao diện player và gán sự kiện
+    function taoPlayer(baiHat, chiSo, danhSach) {
+      var box = document.getElementById("noiDungPlayer");
+      box.innerHTML = `
+        <img id="diaThan" src="${baiHat.cover}" alt="${baiHat.tieuDe}">
+        <h2>${baiHat.tieuDe}</h2>
+        <h3>${baiHat.ngheSi}</h3>
+        <audio id="trinhPhat" src="${baiHat.file}"></audio>
+        <div class="controls">
+          <button id="nutTruoc">⏮️</button>
+          <button id="nutPhatDung">▶️</button>
+          <button id="nutSau">⏭️</button>
+        </div>
+        <div class="progress-container">
+          <span id="thoiHienTai">0:00</span>
+          <input type="range" id="thanhTienTrinh" value="0" step="1" min="0">
+          <span id="tongThoiLuong">0:00</span>
+        </div>
+        <div class="volume-container">
+          <button id="nutMute">🔊</button>
+          <input type="range" id="thanhAmLuong" min="0" max="1" step="0.01" value="1">
+        </div>
+      `;
+
+      // Tham chiếu các phần tử
+      var audio       = document.getElementById("trinhPhat");
+      var btnPlay     = document.getElementById("nutPhatDung");
+      var btnPrev     = document.getElementById("nutTruoc");
+      var btnNext     = document.getElementById("nutSau");
+      var progBar     = document.getElementById("thanhTienTrinh");
+      var timeNow     = document.getElementById("thoiHienTai");
+      var timeTotal   = document.getElementById("tongThoiLuong");
+      var btnMute     = document.getElementById("nutMute");
+      var volBar      = document.getElementById("thanhAmLuong");
+      var diaThan     = document.getElementById("diaThan");
+
+      // 4. Play / Pause
+      btnPlay.onclick = function() {
+        if (audio.paused) {
+          audio.play();
+          btnPlay.textContent = "⏸️";
+        } else {
+          audio.pause();
+          btnPlay.textContent = "▶️";
+        }
+      };
+
+      // 5. Prev / Next
+      btnPrev.onclick = function() {
+        var m = (chiSo - 1 + danhSach.length) % danhSach.length;
+        taoPlayer(danhSach[m], m, danhSach);
+      };
+      btnNext.onclick = function() {
+        var m = (chiSo + 1) % danhSach.length;
+        taoPlayer(danhSach[m], m, danhSach);
+      };
+
+      // 6. Khi metadata sẵn sàng → thiết lập max của progress và tổng thời lượng
+      audio.addEventListener("loadedmetadata", function() {
+        progBar.max      = Math.floor(audio.duration);
+        timeTotal.textContent = chuyenThoiGian(audio.duration);
+      });
+
+      // 7. Cập nhật progress và thời gian hiện tại
+      audio.addEventListener("timeupdate", function() {
+        progBar.value         = Math.floor(audio.currentTime);
+        timeNow.textContent   = chuyenThoiGian(audio.currentTime);
+      });
+      
+      progBar.oninput = function() {
+        audio.currentTime = this.value;
+      };
+
+      // 8. Điều chỉnh âm lượng & mute
+      volBar.oninput = function() {
+        audio.volume = this.value;
+        audio.muted  = false;
+        btnMute.textContent = "🔊";
+      };
+      btnMute.onclick = function() {
+        audio.muted  = !audio.muted;
+        btnMute.textContent = audio.muted ? "🔇" : "🔊";
+      };
+
+      // 9. Xoay đĩa khi play, dừng xoay khi pause hoặc kết thúc
+      audio.addEventListener("play", function() {
+        diaThan.style.animationPlayState = "running";
+      });
+      audio.addEventListener("pause", function() {
+        diaThan.style.animationPlayState = "paused";
+      });
+      audio.addEventListener("ended", function() {
+        diaThan.style.animationPlayState = "paused";
+        btnNext.click(); // tự next khi hết bài
+      });
+    }
+
+    // 10. Khởi tạo player khi trang load
+    document.addEventListener("DOMContentLoaded", function() {
+      var params   = new URLSearchParams(location.search);
+      var idBaiHat = parseInt(params.get("song")) || 1;
+      var list     = layDanhSachBaiHat();
+      var idx      = list.findIndex(function(x) { return x.id === idBaiHat; });
+      if (idx < 0) { idx = 0; }
+      taoPlayer(list[idx], idx, list);
+    });
   </script>
 
 </body>
